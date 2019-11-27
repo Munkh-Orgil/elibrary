@@ -1,0 +1,70 @@
+{% extends "library/base.html" %}
+{% block content%}
+
+<br />
+<br />
+  
+  <div class="main-content" id="panel">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="table-responsive" data-toggle="list" data-list-values='["name", "budget", "status", "completion"]'>
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Номын нэр</th>
+                    <th scope="col">Зохиолч</th>
+                    <th scope="col">Төлөв</th>
+                    <th scope="col">Ангилал</th>
+                    <th scope="col">Одоо байгаа тоо</th>
+                    <th scope="col">Нийтэлсэн он</th>
+                  </tr>
+                </thead>
+                  <tbody class="list">
+                    {% for object in object_list %}
+                    <tr>
+                      <th scope="row">
+                        <div class="media align-items-center">
+                          <div class="media-body">
+                            <a href="../books/{{ object.slug }}">
+                              <span class="name mb-0 text-sm">{{ object.title }}</span>
+                            </a>
+                          </div>
+                        </div>
+                      </th>
+                      <td>{{ object.author }}</td>
+                      <td>
+                      {% if object.active == True %}
+                        <span class="badge badge-dot mr-4">
+                          <i class="bg-success"></i>
+                          <span class="status">Тавиур дээр байгаа</span>
+                        </span>
+                      {% else %}
+                        <span class="badge badge-dot mr-4">
+                          <i class="bg-warning"></i>
+                          <span class="status">Тавиур дээр байхгүй</span>
+                        </span>
+                      {% endif %}  
+                      </td>
+                      <td>
+                        
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <span class="completion mr-2">{{ object.available_number }}</span>
+                        </div>
+                      </td>
+                      <td>{{ object.published_date|date:"Y"}}</td>
+                    </tr>   
+
+                    {% endfor %}   
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

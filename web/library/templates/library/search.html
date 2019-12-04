@@ -8,62 +8,66 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
+        {% if object_list %}
+          <h1 class="display-1 mb-0 " style="font-size: 38px; color:#172b4d">Хайлтын илэрц</h1>
           <div class="card">
             <div class="table-responsive" data-toggle="list" data-list-values='["name", "budget", "status", "completion"]'>
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Номын нэр</th>
-                    <th scope="col">Зохиолч</th>
-                    <th scope="col">Төлөв</th>
-                    <th scope="col">Ангилал</th>
-                    <th scope="col">Одоо байгаа тоо</th>
-                    <th scope="col">Нийтэлсэн он</th>
+                  <tr >
+                    <th style="color:#172b4d" scope="col">Номын нэр</th>
+                    <th style="color:#172b4d" scope="col">Зохиолч</th>
+                    <th style="color:#172b4d" scope="col">Төлөв</th>
+                    <th style="color:#172b4d" scope="col">Ангилал</th>
+                    <th style="color:#172b4d" scope="col">Одоо байгаа тоо</th>
+                    <th style="color:#172b4d" scope="col">Нийтэлсэн он</th>
                   </tr>
                 </thead>
                   <tbody class="list">
                     {% for object in object_list %}
-                    <tr>
-                      <th scope="row">
-                        <div class="media align-items-center">
-                          <div class="media-body">
-                            <a href="../books/{{ object.slug }}">
-                              <span class="name mb-0 text-sm">{{ object.title }}</span>
-                            </a>
+                      <tr> 
+                        <th scope="row">
+                          <div class="media align-items-center">
+                            <div class="media-body">
+                              <span class="name mb-0 text-sm">
+                                <a href="../books/{{ object.slug }}" onclick="window.open('../books/{{ object.slug }}')">{{ object.title }}</a>
+                              </span>
+                            </div>
                           </div>
-                        </div>
-                      </th>
-                      <td>{{ object.author }}</td>
-                      <td>
-                      {% if object.active == True %}
-                        <span class="badge badge-dot mr-4">
-                          <i class="bg-success"></i>
-                          <span class="status">Тавиур дээр байгаа</span>
-                        </span>
-                      {% else %}
-                        <span class="badge badge-dot mr-4">
-                          <i class="bg-warning"></i>
-                          <span class="status">Тавиур дээр байхгүй</span>
-                        </span>
-                      {% endif %}  
-                      </td>
-                      <td>
-                        
-                      </td>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <span class="completion mr-2">{{ object.available_number }}</span>
-                        </div>
-                      </td>
-                      <td>{{ object.published_date|date:"Y"}}</td>
-                    </tr>   
-
+                        </th>
+                        <td>{{ object.author }}</td>
+                        <td>
+                        {% if object.active == True %}
+                          <span class="badge badge-dot mr-4">
+                            <i class="bg-success"></i>
+                            <span class="status">Тавиур дээр байгаа</span>
+                          </span>
+                        {% else %}
+                          <span class="badge badge-dot mr-4">
+                            <i class="bg-warning"></i>
+                            <span class="status">Тавиур дээр байхгүй</span>
+                          </span>
+                        {% endif %}  
+                        </td>
+                        <td>
+                          <a href="../../category/{{ object.category.pk }}" onclick=window.open("../../category/{{ object.category.pk }}")>{{ object.category }}</a>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <span class="completion mr-2">{{ object.available_number }}</span>
+                          </div>
+                        </td>
+                        <td>{{ object.published_date|date:"Y"}}</td>
+                      </tr>   
                     {% endfor %}   
                   </tbody>
               </table>
             </div>
           </div>
         </div>
+        {% else %}
+          <h1 class="display-1 mb-0 " style="font-size: 38px; color:#172b4d">Хайлт илэрцгүй</h1>
+        {% endif %}
       </div>
     </div>
   </div>

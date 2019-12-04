@@ -2,41 +2,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-    <meta name="author" content="Creative Tim">
-    <title>eLibrary</title>
-    <!-- Favicon -->
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-    <!-- Icons -->
-    <link rel="stylesheet" href="{% static 'library/vendor/nucleo/css/nucleo.css'%}" type="text/css">
-    <link rel="stylesheet" href="{% static 'library/vendor/@fortawesome/fontawesome-free/css/all.min.css'%}" type="text/css">
-    <!-- Argon CSS -->
-    <link rel="stylesheet" href="{% static 'library/css/argon.css' %}" type="text/css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <title>Шинэ эхлэл - Цахим номын сан</title>
+  <!-- Favicon -->
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="{% static 'library/vendor/nucleo/css/nucleo.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'library/vendor/@fortawesome/fontawesome-free/css/all.min.css'%}" type="text/css">
+  
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="{% static 'library/css/argon.css' %}" type="text/css">
 </head>      
 <body>
-  <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+  <nav class="navbar navbar-top navbar-expand navbar-dark bg-default border-bottom">
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav align-items-center ml-md-auto">
             <li class="nav-item">
               <a href="{% url "home" %}" class="nav-link">
                 <i class="ni ni-world"></i>
-                Home
+                Нүүр
               </a>
             </li>
             <li class="nav-item">
-              <a href="../books" class="nav-link">
+              <a href="../category" class="nav-link">
                 <i class="ni ni-book-bookmark"></i>
-                All Books
+                Бүх номнууд
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{% url "about" %}" class="nav-link">
                 <i class="ni ni-trophy"></i> 
-                About
+                Тухай
               </a>
             </li>
           </ul>
@@ -45,13 +46,22 @@
   </nav>
     {% block content %} {% endblock %}
 
+    <!-- <footer style="color: #5e72e4">
+        <div id="footer">
+            <div id="footer-info">
+            <center>© Copyright 2019 
+                <br>
+                Шинэ эхлэл сургуулийн цахим номын сан</center>
+            </div>
+        </div>
+    </footer> -->
     <script src="{% static 'library/vendor/jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'library/vendor/bootstrap/dist/js/bootstrap.bundle.min.js'%}"></script>
     <script src="{% static 'library/vendor/js-cookie/js.cookie.js'%}"></script>
     <script src="{% static 'library/vendor/jquery.scrollbar/jquery.scrollbar.min.js'%}"></script>
     <script src="{% static 'library/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js'%}"></script>
     <!-- Argon JS -->
-    <script src="{% static 'library/js/argon.js?v=1.1.0' %}"></script>
+    <script src="{% static 'library/js/argon.js' %}"></script>
     <!-- Demo JS - remove this in your project -->
     <script src="{% static 'library/js/demo.min.js' %}"></script>
 </body>

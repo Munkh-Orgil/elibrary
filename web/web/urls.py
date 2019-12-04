@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from library.views import BookListView, BookDetailView, SearchResultsView, HomePageView
+from library.views import CategoryListView, BookDetailView, SearchResultsView, HomePageView, CategoryDetailView, CategoryListView, AboutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('books/', include('library.urls')),
     path('',HomePageView.as_view(), name='home'),
     path('search/', SearchResultsView.as_view(), name='search'),
+    path('category/', CategoryListView.as_view(template_name='library/category_list.html'), name="category-list"),
+    path('category/<int:pk>', CategoryDetailView.as_view(template_name='library/category_detail.html'), name="category-detail"),
+    path('about/', AboutView.as_view(template_name='library/about.html'), name="about"),
 ]

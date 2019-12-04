@@ -1,14 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Book Detail page</h1>
-    <h1>{{ book.author }}: {{ book.title }}</h1>
-    {{ book.description }}
-</body>
-</html>
+{% extends "library/base.html" %} {% block content %} {% load static %}
+<div id="page-container">
+    <div id="content-wrap">
+        <h1 class="display-1" id="title">{{ book.title }}</h1>
+        <h1 class="display-4" id="sub-title">{{ book.author }}</h1>
+        <div class="row" id="picture" style="width: 1400px;">
+            <div class="col-6 col-lg-4">
+                <div class="card bg-gradient-default">
+                    <div class="card-body text-white text-center " style="height: 600px;">Picture coming soon</div>
+                </div>
+            </div>
+            <div class="col-lg-7 card-wrapper">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row py-3 align-items-center">
+                            <div class="col-lg-3" style="height:43px;">
+                                <small class="text-uppercase text-muted font-weight-bold">Нийтэлсэн он:</small>
+                            </div>
+                            <div class="col-lg-9">
+                                <p>{{ book.published_date|date:"Y" }}</p>
+                            </div>
+                        </div>
+                        <div class="row py-3 align-items-center">
+                            <div class="col-lg-3"  style="height:43px;">
+                                <small class="text-uppercase text-muted font-weight-bold">Боть: </small>
+                            </div>
+                            <div class="col-lg-9">
+                                <p>{{ book.volume }}</p>
+                            </div>
+                        </div>
+                        <div class="row py-3 align-items-center">
+                            <div class="col-lg-3"  style="height:43px;">
+                                <small class="text-uppercase text-muted font-weight-bold">Ангилал: </small>
+                            </div>
+                            <div class="col-lg-9">
+                                <p>{{ book.category }}</p>
+                            </div>
+                        </div>
+                        <div class="row py-3 align-items-center">
+                            <div class="col-lg-3"  style="height:43px;">
+                                <small class="text-uppercase text-muted font-weight-bold">Тоо ширхэг: </small>
+                            </div>
+                            <div class="col-lg-9">
+                                <p>{{ book.available_number }}</p>
+                            </div>
+                        </div>
+                        <div class="row py-3 align-items-center">
+                            <div class="col-lg-3"  style="height:43px;">
+                                <small class="text-uppercase text-muted font-weight-bold">Төлөв: </small>
+                            </div>
+                            <div class="col-lg-9">
+                                {% if book.active == True %}
+                                    <p>
+                                        <span class="badge badge-dot mr-4" style="font-size: 1rem; color: #525f7f">
+                                            <i class="bg-success"></i>
+                                            <span class="status">Байгаа</span>
+                                        </span>
+                                    </p>
+                                {% else %}
+                                    <p>
+                                        <span class="badge badge-dot mr-4" style="font-size: 1rem; color: #525f7f">
+                                            <i class="bg-warning"></i>
+                                            <span class="status">Байхгүй</span>
+                                        </span>
+                                    <p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row py-3 align-items-center">
+                            <div class="col-lg-3"  style="height:43px;">
+                                <small class="text-uppercase text-muted font-weight-bold">Товч тайлбар: </small>
+                            </div>
+                            <div class="col-lg-9">
+                                <p>{{ book.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% comment %} <div class="col-12 col-lg-8">
+                <div class="col-lg-3">
+                    <small class="text-uppercase text-muted font-weight-bold">Нийтэлсэн он: </small>
+                </div>
+                <div class="col-lg-9">
+                    <p>{{ book.published_date|date:"Y" }} </p>
+                </div>
+                <br>
+                <h3>Боть: &nbsp;&nbsp; {{ book.volume }}</h3>
+                <br>
+                <h3>Ангилал: &nbsp;&nbsp; {{ book.category }}</h3>
+                <br>
+                <h3>Тоо ширхэг: &nbsp;&nbsp; {{ book.available_number }}</h3>
+                <br>
+                <h3>Төлөв:
+                    {% if book.active == True %}
+                        <span class="badge badge-dot mr-4" style="font-size: 18px; font: bold;" id="box">
+                            <i class="bg-success"></i>
+                            <span class="status">Байгаа</span>
+                        </span>
+                    {% else %}
+                        <span class="badge badge-dot mr-4" style="font-size: 18px; font: bold;">
+                            <i class="bg-warning"></i>
+                            <span class="status">Байхгүй</span>
+                        </span>
+                    {% endif %}
+                </h3>
+                <br>
+                <h3>Товч тайлбар: {{ book.description }}</h3>
+            </div> {% endcomment %}
+        </div>
+        <style>
+            #picture,#title{
+                margin-top: 2rem;
+                margin-left: 2rem;
+            }
+            #sub-title{
+                margin-left: 2rem;
+            }
+            #box{
+                margin-left: 4rem;
+            }
+        </style>
+    </div>
+</div>
+{% endblock %}

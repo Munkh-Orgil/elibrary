@@ -1,0 +1,72 @@
+{% extends "library/base.html" %}
+{% block content %}
+<br />
+<br />
+    {% comment %} <h1>Category detail </h1>
+    <ul>
+        {% for object in objects %}
+            <li>{{ object.author}} - {{ object.title}}</li>
+        {% endfor %}
+    </ul> {% endcomment %}
+    <div class="main-content" id="panel">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                {% for object in objects|slice:":1" %}
+                        <h1 class="display-1 mb-0 " style="font-size: 38px; color:#172b4d">{{ object.category }} ангилалын номнууд</h1>
+                {% endfor %}
+                    <div class="card">
+                        <div class="table-responsive" data-toggle="list" data-list-values='["name", "budget", "status", "completion"]'>
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                    <tr >
+                                        <th style="color:#172b4d" scope="col">Номын нэр</th>
+                                        <th style="color:#172b4d" scope="col">Зохиолч</th>
+                                        <th style="color:#172b4d" scope="col">Төлөв</th>
+                                        <th style="color:#172b4d" scope="col">Одоо байгаа тоо</th>
+                                        <th style="color:#172b4d" scope="col">Нийтэлсэн он</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="list">
+                                    {% for object in objects %}
+                                    <tr> 
+                                        <th scope="row">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <span class="name mb-0 text-sm">
+                                                        <a href="../books/{{ object.slug }}" onclick=window.open('../books/{{ object.slug }}')>{{ object.title }}</a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <td>{{ object.author }}</td>
+                                        <td>
+                                            {% if object.active == True %}
+                                                <span class="badge badge-dot mr-4">
+                                                    <i class="bg-success"></i>
+                                                    <span class="status">Тавиур дээр байгаа</span>
+                                                </span>
+                                            {% else %}
+                                                <span class="badge badge-dot mr-4">
+                                                    <i class="bg-warning"></i>
+                                                    <span class="status">Тавиур дээр байхгүй</span>
+                                                </span>
+                                            {% endif %}  
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span class="completion mr-2">{{ object.available_number }}</span>
+                                            </div>
+                                        </td>
+                                        <td>{{ object.published_date|date:"Y"}}</td>
+                                    </tr>   
+                                    {% endfor %}   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

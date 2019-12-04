@@ -1,0 +1,92 @@
+{% extends "library/base.html" %}
+{% block content %}
+{% load static %}
+<link href="{% static 'library/css/lists.css' %}" type="text/css" rel="stylesheet">
+
+<div id="page-container">
+    <div id="content-wrap">
+        <section>
+            <!--Box models-->
+            <nav id="Upper-section">
+                <p class="title">Бүх номнууд</p>
+            </nav>
+            <div class="container justify-content-center">
+                <h1 class="display-1 mb-0 text-center" style="margin-bottom: 40px !important; font-size: 60px; color:#172b4d">Ангилал</h1>
+                <div class="row "> 
+                    {% for category in categories %}
+                        {% if category.name == "Компьютер" or category.name == "Философи ба сэтгэлзүй" or category.name == "Нийгмийн шинжлэх ухаан" %}
+                            <div class="col">
+                                <div class="col-md-12">
+                                    <div class="card card-pricing card bg-gradient-default border-0 zoom-in shadow-lg rounded border-0 text-center mb-4">
+                                        <div class="card-header bg-transparent">
+                                            <h3 class="text-uppercase ls-1 text-white py-3 mb-0">{{ category.name }}</h3>
+                                        </div>
+                                        <div class="card-footer bg-transparent">
+                                            <a href="{{ category.pk }}" class="text-white">View more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="row"> 
+                    {% for category in categories %}
+                        {% if category.name == "Хэл шинжлэл" or category.name == "Байгалийн шинжлэх ухаан" or category.name == "Техник технологи" %}
+                            <div class="col">
+                                <div class="col-md-12">
+                                    <div class="card card-pricing card bg-gradient-default border-0 zoom-in shadow-lg rounded border-0 text-center mb-4">
+                                        <div class="card-header bg-transparent">
+                                            <h3 class="text-uppercase ls-1 text-white py-3 mb-0">{{ category.name }}</h3>
+                                        </div>
+                                        <div class="card-footer bg-transparent">
+                                            <a href="{{ category.pk }}" class="text-white">View more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="row"> 
+                    {% for category in categories %}
+                        {% if category.name == "Урлаг" or category.name == "Уран зохиол" or category.name == "Түүх газарзүй" %}
+                            <div class="col">
+                                <div class="col-md-12">
+                                    <div class="card card-pricing card bg-gradient-default border-0 zoom-in shadow-lg rounded border-0 text-center mb-4">
+                                        <div class="card-header bg-transparent">
+                                            <h3 class="text-uppercase ls-1 text-white py-3 mb-0">{{ category.name }}</h3>
+                                        </div>
+                                        <div class="card-footer bg-transparent">
+                                            <a href="{{ category.pk }}" class="text-white">View more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="row"> 
+                    {% for category in categories %}
+                        {% if category.name == "Математик" or category.name == "Анагаах ухаан" or category.name == "Ёс заншил" %}
+                            <div class="col">
+                                <div class="col-md-12">
+                                    <div class="card card-pricing card bg-gradient-default border-0 zoom-in shadow-lg rounded border-0 text-center mb-4">
+                                        <div class="card-header bg-transparent">
+                                            <h3 class="text-uppercase ls-1 text-white py-3 mb-0">{{ category.name }}</h3>
+                                        </div>
+                                        <div class="card-footer bg-transparent">
+                                            <a href="{{ category.pk }}" class="text-white">View more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                
+            </section>
+        </div>
+    </div>
+{% endblock %}
+    

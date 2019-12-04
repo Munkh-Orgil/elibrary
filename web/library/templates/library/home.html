@@ -1,15 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Homepage</h1>
-    <form action="{% url 'search' %}" method="get">
-        <input name="q" type="text" placeholder="Search...">
-    </form>
-</body>
-</html>
+{% extends 'library/base.html' %} {% block content %} {% load static %}
+<link href="{% static 'library/css/home.css' %}" />
+<!--Searchbar-->
+<form action='{% url "search" %}' style="margin-top:200px">
+  <div style="margin-bottom: 20px;">
+    <h1
+      class="display-1 mb-0 text-center"
+      style="font-size: 72px; color:#172b4d"
+    >
+      Цахим номын сан
+    </h1>
+  </div>
+  <div class="header">
+    <div style="width:1200px;" class="container-fluid">
+      <div class="form-group row justify-content-center">
+        <div style="width: 1000px;" >
+          <input
+            name="q"
+            style="height: 60px;"
+            class="form-control"
+            type="text"
+            placeholder="Хайх..."
+            id="example-search-input"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
